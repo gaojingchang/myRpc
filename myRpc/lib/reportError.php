@@ -1,4 +1,6 @@
 <?php
+//TODO: 可记录所有级别错误的log
+
 //打开错误信息
 set_error_handler('displayErrorHandler');
 

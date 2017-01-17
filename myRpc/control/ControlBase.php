@@ -1,5 +1,7 @@
 <?php
 
+!defined('IN_HH') && exit('Access Denied');
+
 class ControlBase {
 
     public $db;
