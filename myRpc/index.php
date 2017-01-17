@@ -13,10 +13,12 @@ $config['debug'] ? error_reporting(E_ALL ^ E_NOTICE) : error_reporting(0);
 //GET参数安全过滤
 $_GET = daddslashes($_GET, 1, TRUE);
 
+//注册自动加载类
 init();
 
 try {
 
+	//检查 c 参数
 	if( isset($_GET['c']) && trim($_GET['c']) ) {
 		$control = trim($_GET['c']);
 	} else {
@@ -26,8 +28,8 @@ try {
 		exit;
 	}
 
+	//实例化控制器
 	$control = $control.'Control';
-
 	if (file_exists(HH_ROOT . "control/$control.php")) {
 		$control = new $control($_REQUEST['c']);
 
