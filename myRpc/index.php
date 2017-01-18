@@ -29,7 +29,7 @@ try {
 	//实例化控制器
 	$control = $control.'Control';
 	if (file_exists(HH_ROOT . "control/$control.php")) {
-		$control = new $control($_REQUEST['c']);
+		$control = new $control($_GET['c']);
 
 		//yar
 		$service = new Yar_Server( $control );
