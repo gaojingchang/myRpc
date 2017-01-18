@@ -3,7 +3,6 @@
 !defined('IN_HH') && exit('Access Denied');
 
 class TestControl extends ControlBase {
-    public $model;
 
     public $config;
 

@@ -23,9 +23,7 @@ try {
 		$control = trim($_GET['c']);
 	} else {
 		error_log(date('Y-m-d H:i:s').":Controller can not be empty".PHP_EOL, 3, HH_ROOT.'log/missController.log');
-
-		//TODO: 暂时没找到对于yar有效的报错机制
-		exit;
+		error404();
 	}
 
 	//实例化控制器
@@ -39,16 +37,10 @@ try {
 
 	} else {
 		error_log(date('Y-m-d H:i:s').":{$control} NOT FOUND".PHP_EOL, 3, HH_ROOT.'log/missController.log');
-
-		//TODO: 报错
-		exit;
+		error404();
 	}
 
 } catch (Exception $e)  {
 
-	//记录错误日志
 	error_log(date('Y-m-d H:i:s').':'.$e->getMessage().PHP_EOL, 3, HH_ROOT.'log/fatalError.log');
-
-	//TODO: 报错
-	exit;
 }
