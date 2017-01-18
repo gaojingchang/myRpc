@@ -4,7 +4,7 @@ date_default_timezone_set('PRC');
 define('IN_HH', TRUE);
 define('HH_ROOT', dirname(__FILE__) . DIRECTORY_SEPARATOR);
 
-include_once(HH_ROOT.'conf/config.inc.php');
+include_once(HH_ROOT . 'conf/config.inc.php');
 include_once(HH_ROOT . 'lib/fun.inc.php');
 
 //开启调试
@@ -23,7 +23,7 @@ try {
 		$control = trim($_GET['c']);
 	} else {
 		error_log(date('Y-m-d H:i:s').":Controller can not be empty".PHP_EOL, 3, HH_ROOT.'log/missController.log');
-		error404();
+		httpError(601, 'Controller Can Not Be Empety');
 	}
 
 	//实例化控制器
@@ -37,10 +37,10 @@ try {
 
 	} else {
 		error_log(date('Y-m-d H:i:s').":{$control} NOT FOUND".PHP_EOL, 3, HH_ROOT.'log/missController.log');
-		error404();
+		httpError(602, 'Controller Not Found');
 	}
 
 } catch (Exception $e)  {
-
 	error_log(date('Y-m-d H:i:s').':'.$e->getMessage().PHP_EOL, 3, HH_ROOT.'log/fatalError.log');
+	httpError(700, 'Server Exception');
 }

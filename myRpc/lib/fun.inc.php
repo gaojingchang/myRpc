@@ -67,9 +67,11 @@ function error($code, $errorMsg='') {
     return $result;
 }
 
-//404错误
-function error404() {
-    header("HTTP/1.1 404 Not Found");
-    header("Status: 404 Not Found");
+/**
+ * @desc 为避免与系统的错误混淆，这里使用了自定义错误
+ * @param $code 状态代码 [601|602=c参数错误,700=php执行时出现致命错误]
+ */
+function httpError($code, $desc) {
+    header("HTTP/1.1 {$code} {$desc}");
     exit;
 }
